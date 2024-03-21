@@ -14,17 +14,15 @@ namespace Planetario.OK
 
         readonly Planetario planetario = new Planetario();
         readonly Vector vectorInstance = new Vector();
-        readonly Color colorTrasparent = new SolidBrush(Color.FromArgb(0, Color.Black)).Color;
 
         public Form1()
         {
             InitializeComponent();
             WindowState = FormWindowState.Maximized;
             
-            BackColor = Color.Black;
-            this.Paint += new PaintEventHandler(Form1_Paint);
-
+            Paint += new PaintEventHandler(Form1_Paint);
             timer.Tick += new EventHandler(tiktak_Tick);
+            timer.Interval = 1000;
         }
 
         private void btnStart_Click(object sender, EventArgs e)
@@ -137,19 +135,22 @@ namespace Planetario.OK
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
-            g = CreateGraphics();
-
-            string imagePath = Path.Combine(Application.StartupPath, "..\\..\\..\\background.jpg");
-            this.BackgroundImage = Image.FromFile(imagePath);
-            this.BackgroundImageLayout = ImageLayout.Stretch;
+            DrawPlanets();
         }
 
         private void tiktak_Tick(object sender, EventArgs e)
         {
-            timer.Interval = 1000;
             planetario.Traiettoria(timer.Interval / 1000);
             Refresh();
             DrawPlanets();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            string imagePath = Path.Combine(Application.StartupPath, "..\\..\\..\\background.jpg");
+            this.BackgroundImage = Image.FromFile(imagePath);
+            this.BackgroundImageLayout = ImageLayout.Stretch;
+            g = CreateGraphics();
         }
     }
 }

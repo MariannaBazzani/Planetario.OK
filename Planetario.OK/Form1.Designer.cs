@@ -11,14 +11,14 @@
         /// Pulire le risorse in uso.
         /// </summary>
         /// <param name="disposing">ha valore true se le risorse gestite devono essere eliminate, false in caso contrario.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        //protected override void Dispose(bool disposing)
+        //{
+        //    if (disposing && (components != null))
+        //    {
+        //        components.Dispose();
+        //    }
+        //    base.Dispose(disposing);
+        //}
 
         #region Codice generato da Progettazione Windows Form
 
@@ -41,24 +41,24 @@
             this.btnStart = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.btnStop = new System.Windows.Forms.Button();
             this.lblNome = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lstPianeti
             // 
+            this.lstPianeti.ForeColor = System.Drawing.SystemColors.WindowText;
             this.lstPianeti.FormattingEnabled = true;
-            this.lstPianeti.Location = new System.Drawing.Point(12, 139);
+            this.lstPianeti.Location = new System.Drawing.Point(12, 141);
             this.lstPianeti.Name = "lstPianeti";
             this.lstPianeti.Size = new System.Drawing.Size(186, 82);
             this.lstPianeti.TabIndex = 0;
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(12, 110);
+            this.btnAdd.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnAdd.Location = new System.Drawing.Point(12, 112);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(58, 23);
             this.btnAdd.TabIndex = 1;
@@ -72,21 +72,21 @@
             // 
             // txtMassa
             // 
-            this.txtMassa.Location = new System.Drawing.Point(65, 57);
+            this.txtMassa.Location = new System.Drawing.Point(65, 59);
             this.txtMassa.Name = "txtMassa";
             this.txtMassa.Size = new System.Drawing.Size(132, 20);
             this.txtMassa.TabIndex = 2;
             // 
             // txtVelocita
             // 
-            this.txtVelocita.Location = new System.Drawing.Point(65, 5);
+            this.txtVelocita.Location = new System.Drawing.Point(65, 7);
             this.txtVelocita.Name = "txtVelocita";
             this.txtVelocita.Size = new System.Drawing.Size(132, 20);
             this.txtVelocita.TabIndex = 3;
             // 
             // txtPosizione
             // 
-            this.txtPosizione.Location = new System.Drawing.Point(65, 31);
+            this.txtPosizione.Location = new System.Drawing.Point(65, 33);
             this.txtPosizione.Name = "txtPosizione";
             this.txtPosizione.Size = new System.Drawing.Size(132, 20);
             this.txtPosizione.TabIndex = 4;
@@ -94,7 +94,8 @@
             // Velocita
             // 
             this.Velocita.AutoSize = true;
-            this.Velocita.Location = new System.Drawing.Point(9, 8);
+            this.Velocita.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Velocita.Location = new System.Drawing.Point(9, 10);
             this.Velocita.Name = "Velocita";
             this.Velocita.Size = new System.Drawing.Size(45, 13);
             this.Velocita.TabIndex = 5;
@@ -103,7 +104,8 @@
             // Posizione
             // 
             this.Posizione.AutoSize = true;
-            this.Posizione.Location = new System.Drawing.Point(9, 34);
+            this.Posizione.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Posizione.Location = new System.Drawing.Point(9, 36);
             this.Posizione.Name = "Posizione";
             this.Posizione.Size = new System.Drawing.Size(52, 13);
             this.Posizione.TabIndex = 6;
@@ -112,7 +114,8 @@
             // Massa
             // 
             this.Massa.AutoSize = true;
-            this.Massa.Location = new System.Drawing.Point(9, 60);
+            this.Massa.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Massa.Location = new System.Drawing.Point(9, 62);
             this.Massa.Name = "Massa";
             this.Massa.Size = new System.Drawing.Size(38, 13);
             this.Massa.TabIndex = 7;
@@ -120,7 +123,8 @@
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(11, 227);
+            this.btnStart.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnStart.Location = new System.Drawing.Point(11, 229);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(93, 23);
             this.btnStart.TabIndex = 8;
@@ -130,7 +134,8 @@
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(76, 110);
+            this.btnRemove.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnRemove.Location = new System.Drawing.Point(76, 112);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(58, 23);
             this.btnRemove.TabIndex = 9;
@@ -140,7 +145,8 @@
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(140, 110);
+            this.btnClear.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnClear.Location = new System.Drawing.Point(140, 112);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(58, 23);
             this.btnClear.TabIndex = 10;
@@ -148,43 +154,23 @@
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.btnStop);
-            this.panel1.Controls.Add(this.lblNome);
-            this.panel1.Controls.Add(this.txtNome);
-            this.panel1.Controls.Add(this.btnStart);
-            this.panel1.Controls.Add(this.Massa);
-            this.panel1.Controls.Add(this.Posizione);
-            this.panel1.Controls.Add(this.btnClear);
-            this.panel1.Controls.Add(this.lstPianeti);
-            this.panel1.Controls.Add(this.Velocita);
-            this.panel1.Controls.Add(this.txtMassa);
-            this.panel1.Controls.Add(this.btnRemove);
-            this.panel1.Controls.Add(this.btnAdd);
-            this.panel1.Controls.Add(this.txtVelocita);
-            this.panel1.Controls.Add(this.txtPosizione);
-            this.panel1.ForeColor = System.Drawing.Color.Black;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(209, 257);
-            this.panel1.TabIndex = 12;
-            // 
             // btnStop
             // 
-            this.btnStop.Location = new System.Drawing.Point(108, 227);
+            this.btnStop.BackColor = System.Drawing.Color.Transparent;
+            this.btnStop.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnStop.Location = new System.Drawing.Point(107, 229);
             this.btnStop.Name = "btnStop";
             this.btnStop.Size = new System.Drawing.Size(91, 23);
             this.btnStop.TabIndex = 14;
             this.btnStop.Text = "Stop";
-            this.btnStop.UseVisualStyleBackColor = true;
+            this.btnStop.UseVisualStyleBackColor = false;
             this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             // 
             // lblNome
             // 
             this.lblNome.AutoSize = true;
-            this.lblNome.Location = new System.Drawing.Point(12, 87);
+            this.lblNome.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblNome.Location = new System.Drawing.Point(12, 89);
             this.lblNome.Name = "lblNome";
             this.lblNome.Size = new System.Drawing.Size(35, 13);
             this.lblNome.TabIndex = 13;
@@ -192,7 +178,7 @@
             // 
             // txtNome
             // 
-            this.txtNome.Location = new System.Drawing.Point(65, 84);
+            this.txtNome.Location = new System.Drawing.Point(65, 86);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(132, 20);
             this.txtNome.TabIndex = 12;
@@ -203,13 +189,26 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.btnStop);
+            this.Controls.Add(this.lblNome);
+            this.Controls.Add(this.lstPianeti);
+            this.Controls.Add(this.txtNome);
+            this.Controls.Add(this.txtPosizione);
+            this.Controls.Add(this.btnStart);
+            this.Controls.Add(this.txtVelocita);
+            this.Controls.Add(this.Massa);
+            this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.Posizione);
+            this.Controls.Add(this.btnRemove);
+            this.Controls.Add(this.btnClear);
+            this.Controls.Add(this.txtMassa);
+            this.Controls.Add(this.Velocita);
             this.ForeColor = System.Drawing.SystemColors.Control;
             this.Name = "Form1";
             this.Text = "Form1";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -227,7 +226,6 @@
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Button btnClear;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblNome;
         private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.Button btnStop;
