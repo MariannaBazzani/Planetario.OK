@@ -8,68 +8,82 @@ namespace Planetario.OK
 {
     public partial class Form1 : Form
     {
-        Graphics g;
+        bool running = false;
 
-        readonly Timer timer = new Timer();
+        Timer timer = new Timer();
 
-        readonly Planetario planetario = new Planetario();
-        readonly Vector vectorInstance = new Vector();
+        Planetario planetario = new Planetario();
+        Vector vectorInstance = new Vector();
 
         public Form1()
         {
             InitializeComponent();
             WindowState = FormWindowState.Maximized;
+            Paint += new PaintEventHandler(SolarSystem);
             
-            Paint += new PaintEventHandler(Form1_Paint);
             timer.Tick += new EventHandler(tiktak_Tick);
-            timer.Interval = 1000;
         }
 
-        private void btnStart_Click(object sender, EventArgs e)
+        private void SolarSystem(object sender, EventArgs e)
         {
-            DrawPlanets();
-            timer.Start();
-        }
-
-        private void btnStop_Click(object sender, EventArgs e)
-        {
-            timer.Stop();
-        }
-
-        private void DrawPlanets()
-        {
+            Graphics g = this.CreateGraphics();
             foreach (var pianeta in planetario.Pianeti)
             {
                 pianeta.DisegnaPianeta(g);
             }
         }
 
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            timer.Start();
+            running = true;
+        }
+
+        private void btnStop_Click(object sender, EventArgs e)
+        {
+            timer.Stop();
+            running = false;
+        }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (!CheckTextBox()) return;
+            if (!running)
+            {
+                if (!CheckTextBox()) return;
 
-            Pianeta p = new Pianeta(Vector.Parse(txtVelocita.Text), double.Parse(txtMassa.Text), Vector.Parse(txtPosizione.Text));
-            p.Colore = GetColor();
+                Pianeta p = new Pianeta(Vector.Parse(txtVelocita.Text), double.Parse(txtMassa.Text), Vector.Parse(txtPosizione.Text));
+                p.Colore = GetColor();
 
-            lstPianeti.Items.Add(p);
-            planetario.Pianeti.Add(p);
+                lstPianeti.Items.Add(p);
+                planetario.Pianeti.Add(p);
 
-            txtVelocita.Clear();
-            txtPosizione.Clear();
-            txtMassa.Clear();
-            txtNome.Clear();
+                txtVelocita.Clear();
+                txtPosizione.Clear();
+                txtMassa.Clear();
+                txtNome.Clear();
+            } else
+            {
+                MessageBox.Show("Non puoi aggiungere mentre il programma sta andando");
+            }
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            if(lstPianeti.SelectedIndex == -1)
+            if (!running)
             {
-                MessageBox.Show("Nessun elemento è stato selezionato");
-            }
-            else
+                int index = lstPianeti.SelectedIndex;
+                if (index == -1)
+                {
+                    MessageBox.Show("Nessun elemento è stato selezionato");
+                }
+                if (index >= 0)
+                {
+                    lstPianeti.Items.RemoveAt(index);
+                    planetario.Pianeti.RemoveAt(index);
+                }
+            } else
             {
-                lstPianeti.Items.RemoveAt(lstPianeti.SelectedIndex);
-                planetario.Pianeti.RemoveAt(lstPianeti.SelectedIndex);
+                MessageBox.Show("Non puoi aggiungere mentre il programma sta andando.");
             }
         }
 
@@ -122,27 +136,29 @@ namespace Planetario.OK
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            if (lstPianeti.Items.Count == 0)
+            if (!running)
             {
-                MessageBox.Show("Nessun elemento è presente nella lista");
+                if (lstPianeti.Items.Count == 0)
+                {
+                    MessageBox.Show("Nessun elemento è presente nella lista");
+                }
+                else
+                {
+                    lstPianeti.Items.Clear();
+                    planetario.Pianeti.RemoveRange(0, planetario.Pianeti.Count - 1);
+                }
             }
             else
             {
-                lstPianeti.Items.Clear();
-                planetario.Pianeti.RemoveRange(0, planetario.Pianeti.Count - 1);
+                MessageBox.Show("Non puoi rimuovere elementi mentre il programma sta andando");
             }
-        }
-
-        private void Form1_Paint(object sender, PaintEventArgs e)
-        {
-            DrawPlanets();
         }
 
         private void tiktak_Tick(object sender, EventArgs e)
         {
-            planetario.Traiettoria(timer.Interval / 1000);
-            Refresh();
-            DrawPlanets();
+            timer.Interval = 100;
+            planetario.Traiettoria((float)timer.Interval / 1000);
+            this.Refresh();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -150,7 +166,6 @@ namespace Planetario.OK
             string imagePath = Path.Combine(Application.StartupPath, "..\\..\\..\\background.jpg");
             this.BackgroundImage = Image.FromFile(imagePath);
             this.BackgroundImageLayout = ImageLayout.Stretch;
-            g = CreateGraphics();
         }
     }
 }

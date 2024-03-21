@@ -29,7 +29,7 @@ namespace Planetario.OK
             return ForzaTot;
         }
 
-        public void Traiettoria(int interval)
+        public void Traiettoria(float interval)
         {
             foreach (Pianeta pianeta in Pianeti)
             {

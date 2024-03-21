@@ -8,10 +8,8 @@ namespace Planetario.OK
         public Vector Velocita { get; set; }
         public double Massa { get; set; }
         public Vector Posizione { get; set; }
-        public Vector ForzaApplicata { get; set; }
         public Vector Accelerazione { get; set; }
         public double G { get; set; } = 6.67;
-        public double Tempo { get; set; }
         public Color Colore { get; set; }
 
         public Pianeta(Vector velocita, double massa, Vector posizione)
