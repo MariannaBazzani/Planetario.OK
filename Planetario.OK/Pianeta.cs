@@ -21,7 +21,7 @@ namespace Planetario.OK
 
         public void DisegnaPianeta(Graphics g)
         {
-            float raggio = (float)Math.Sqrt(Massa);
+            float raggio = (float)Math.Pow(Massa, 0.33);
             float x = (float)Posizione.X - (raggio / 2);
             float y = (float)Posizione.Y - (raggio / 2);
             g.FillEllipse(new SolidBrush(Colore), x, y, raggio, raggio);
